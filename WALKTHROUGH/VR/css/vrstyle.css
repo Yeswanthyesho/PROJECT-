@@ -1,0 +1,108 @@
+.video_icon img {
+  position: relative;
+  z-index: 3;
+  width: 20px;
+  height: 10px;
+}
+.video_icon::before,
+.video_icon::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  display: block;
+  width: 80px;
+  height: 80px;
+  background: #2e3191;
+  border-radius: 50%;
+  transition: all 200ms;
+}
+.video_icon::before {
+  animation: pulse-border 1500ms ease-out infinite;
+}
+.video_icon:hover::before,
+.video_icon:hover::after {
+  width: 100px;
+  height: 100px;
+}
+@keyframes pulse-border {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+    color: #fff;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+.video_icon {
+  /* border: none; */
+  padding: 0.5em 0.5em;
+  color: #fff;
+  font-family: "Lato", Calibri, Arial, sans-serif;
+  font-size: 1em;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+
+  position: absolute;
+  top: 150px;
+  left: 1200px;
+  overflow: hidden;
+}
+
+/**/
+.menu-dropdown {
+  margin-top: 20px;
+  padding: 1px; /* Remove default padding */
+}
+
+.menu-dropdown li {
+  list-style: none; /* Remove default list styles */
+  padding: 20px; /* Add padding around each menu item */
+  margin: 4px; /* Reset margin */
+  border-radius: 5px; /* Add border radius to round the corners */
+  cursor: pointer; /* Change cursor to indicate clickable */
+  text-align: center; /* Center-align the text */
+  background-size: cover; /* Ensure the background image covers the entire area */
+  background-position: center;
+  opacity: 0.5;
+  transition: opacity 0.3s;
+}
+.menu-dropdown li:hover {
+  opacity: 1; /* Increase opacity on hover */
+}
+.menu-dropdown li:hover {
+  background-color: rgba(0, 0, 0, 0.7); /* Change background color on hover */
+}
+
+.menu-dropdown li a {
+  color: #0f0f0f; /* Change text color of the menu item */
+  text-decoration: none; /* Remove underline from links */
+  font-size: 20px;
+}
+
+.menu-dropdown li a:hover {
+  text-decoration: underline; /* Underline links on hover */
+}
+.logotype {
+  background-image: url("IMG_8594.jpg");
+  /* Other existing styles */
+  margin-bottom: 20px; /* Adjust the margin bottom as needed */
+}
+#menubox {
+  display: block; /* Ensure the menu is initially visible */
+  position: absolute; /* Set the position to absolute */
+  top: 230px;
+  left: 15px;
+  width: 150px;
+  height: 150px;
+  border-radius: 8px;
+  z-index: 1000;
+}

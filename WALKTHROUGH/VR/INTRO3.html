@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>VR..!</title>
+    <link rel="stylesheet" href="css/vrstyle.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script>
+      function toggleGifAndAudio() {
+        var gif = document.getElementById("video");
+        var audio = document.getElementById("audio");
+        var audio1 = document.getElementById("audio1");
+        if (gif.style.display === "none" || gif.style.display === "") {
+          gif.style.display = "block";
+          audio.pause(); // Pause audio
+          audio1.play(); // Play audio1
+        } else {
+          gif.style.display = "none";
+          audio1.pause(); // Pause audio1
+          audio.play(); // Play audio
+        }
+      }
+
+      function toggler(menuId) {
+        var menu = document.getElementById(menuId);
+        if (menu.style.display === "block") {
+          menu.style.display = "none";
+        } else {
+          menu.style.display = "block";
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <audio id="audio" loop="true" controls="controls" style="display: none">
+      <source
+        src="https://s3.ap-south-1.amazonaws.com/vitvlr-s3-vr360/audio/bgm.mp3"
+        type="audio/mp3"
+      />
+    </audio>
+    <audio id="audio1" loop="true" controls="controls" style="display: none">
+      <source src="/VR/entrace aud.mp3" type="audio/mp3" />
+    </audio>
+    <a-scene cursor="rayOrigin: mouse" raycaster="objects: .clickable">
+      <!-- Background Image -->
+      <a-sky
+        src="IMG_8722.jpg"
+        rotation="0 360 0"
+        crossorigin="anonymous"
+        material="shader: flat;"
+        scale="5 1 5"
+        rotate-bacground
+      >
+      </a-sky>
+
+      <!-- Overlay Image (Clickable) -->
+      <a-image
+        src="/VR/front arrow.png"
+        crossorigin="anonymous"
+        material="shader: flat;"
+        scale="10 10 10"
+        look-at="[camera]"
+        rotation="0 90 0"
+        position="20 0 5"
+        class="clickable"
+        event-set__click="_target: #camera; _raycasterObjects: .clickable; position: 20 0 5; lookAt: [0 0 0]"
+        onclick="window.location.href='/VR/INTRO.html';"
+      ></a-image>
+    </a-scene>
+
+    <!-- GIF Image -->
+    <img
+      id="video"
+      src="/VR/animation.gif"
+      alt="Your GIF"
+      style="
+        position: absolute;
+        top: 150px;
+        left: 990px;
+        width: 300px;
+        height: 300px;
+        z-index: 999;
+        display: none;
+      "
+    />
+
+    <!-- Video Icon -->
+    <div class="circle">
+      <image
+        class="video_icon"
+        src="/VR/videoicon.png"
+        alt="CHECK"
+        onclick="toggleGifAndAudio()"
+        style="
+          position: absolute;
+          top: 150px;
+          left: 1200px;
+          width: 50px;
+          height: 50px;
+          object-fit: cover;
+          z-index: 999;
+          background: #2e3191;
+          border-radius: 100%;
+        "
+      ></image>
+    </div>
+    <div
+      class="menu_list"
+      style="z-index: 1000; position: absolute; top: 150px; left: 20px"
+    >
+      <image
+        class=""
+        src="/VR/menuicon.png"
+        alt=""
+        style="
+          width: 60px;
+          height: 60px;
+          background: #2e3191;
+          object-fit: cover;
+          border-radius: 100%;
+        "
+      >
+      </image>
+    </div>
+    <div>
+      <nav
+        role="navigation"
+        class="menu"
+        id="menubox"
+        style="
+          display: none;
+          position: absolute;
+          top: 230px;
+          left: 15px;
+          width: 150px;
+          height: 150px;
+          border: radius 8px;
+          z-index: 1000;
+        "
+      >
+        <div
+          class="close"
+          style="opacity: 1"
+          onclick="toggler('menubox');"
+        ></div>
+        <a
+          href="#"
+          class="logotype"
+          style="
+            background-color: #2e3191;
+            color: black;
+            list-style: none;
+            padding: 20px;
+            margin: 4px;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: center;
+            background-size: cover;
+            background-position: center;
+            width: 150px;
+          "
+        >
+          VIT<span>CAMPUS</span>
+        </a>
+        <div class="overflow-container">
+          <ul class="menu-dropdown" ;>
+            <li
+              style="
+                background-image: url('IMG_8594.jpg');
+                width: 150px;
+                height: 30px;
+                border: radius 8px;
+              "
+            >
+              <a href="#" class="back_img1" onclick="ScenLoader(1);"
+                >MAIN ENTRANCE</a
+              >
+            </li>
+            <li
+              style="
+                background-image: url('IMG_8594.jpg');
+                width: 150px;
+                height: 30px;
+                border: radius 8px;
+              "
+            >
+              <a href="#" class="back_img2" onclick="ScenLoader(2)"
+                >CSE Block</a
+              >
+            </li>
+            <li
+              style="
+                background-image: url('IMG_8594.jpg');
+                width: 150px;
+                height: 30px;
+                border: radius 8px;
+              "
+            >
+              <a href="#" class="back_img3" onclick="ScenLoader(3)">Library</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </body>
+</html>
